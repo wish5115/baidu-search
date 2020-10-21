@@ -1,0 +1,73 @@
+{
+	"name": "baidu-search",
+	"displayName": "baidu-search",
+	"description": "Baidu your doubts, errors and confusions! Modified from Kamesh Kotwani's Google Search.",
+	"keywords": [
+		"baidu",
+		"search",
+		"vscode",
+		"wilson",
+		"google"
+	],
+	"version": "0.0.2",
+	"publisher": "WilsonWong",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"author": {
+		"name": "Wilson Wong",
+		"url": "http://bbs.91wc.net/baidu-search"
+	},
+	"icon": "resources/icon.png",
+	"homepage": "http://bbs.91wc.net/baidu-search",
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/wish5115/baidu-search"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.baiduSearch"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "extension.baiduSearch",
+					"group": "navigation"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "extension.baiduSearch",
+				"title": "Baidu search"
+			}
+		],
+		"configuration": {
+			"title": "Baidu Search Config",
+			"type": "object",
+			"properties": {
+				"baiduSearch.QueryTemplate": {
+					"type": "string",
+					"default": "https://www.baidu.com/s?wd=%SELECTION%",
+					"description": "Search Query"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
